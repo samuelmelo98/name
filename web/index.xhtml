@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://java.sun.com/jsf/html"
+      xmlns:dc="http://devdojo.com.br/componets">
+   <f:view>
+      <h:outputLabel value="Ola, Mundoo"/>
+   </f:view>
+<hr></hr>
+<ui:composition template="WEB-INF/Tamplates/tamplate.xhtml">
+<ui:define name="titulo">
+   <h:outputText value="#{bean.nome}"/>
+</ui:define>
+  <ui:define name="menu"> <ui:include src="WEB-INF/Tamplates/menu.xhtml"></ui:include></ui:define>
+    <h:outputText id="txt1" value="#{bean.nome}"/>
+
+    <p>
+        <h:commandButton id="btn"
+                         action="#{bean.}"
+                         process="@form"
+                         update="mod"/>
+        <dc:confirmDelete/>
+    </p>
+
+    <h:outputText id="txt" value="#{bean.nome}"/>
+    <h:outputText id="txt2" value="#{pessoa.nome}"/>
+
+</ui:composition>
+
+</html>

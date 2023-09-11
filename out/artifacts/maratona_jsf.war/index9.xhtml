@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:rich="http://richfaces.org/rich" xmlns:a="http://java.sun.com/jsf/html">
+
+
+    <h:outputText value="Teste java script com jquery!"/>
+
+    <h:form>
+        <h:outputText value="test" id="teste">
+            <f:ajax
+                event="change"
+                execute="@this"
+                render="teste"
+                listener="#{index8.pegaValorNaView}"/>
+        </h:outputText>
+        <a:commandButton
+                value="Enviar"
+                actionListener="#{index8.pegaValorNaView()}"
+                ></a:commandButton>
+    </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var  criarDeNome =  function (primeiroNome = "Samuel", ultimoNome = "Melo") {
+        console.log(primeiroNome + "  " + ultimoNome);
+        alert(primeiroNome + "    " + ultimoNome);
+    };
+    criarDeNome();
+</script>
+<script src="resources/script/myscript.js" type="text/javascript"></script>
+ </ui:composition>

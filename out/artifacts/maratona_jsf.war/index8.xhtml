@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:rich="http://richfaces.org/rich" xmlns:a="http://java.sun.com/jsf/html">
+    <h:outputStylesheet>
+        .rf-dt{
+            width:400px;
+        }
+        .acent{
+            text-align: center;
+        }
+    </h:outputStylesheet>
+    <rich:notifyMessages
+        stayTime="4000"
+        sticky="false"
+        showShadow="true"
+        showCloseButton="true"
+        />
+
+    <div
+            style="background-color: green;
+            width: 350px;
+            height: 250px;
+            text-align: left;
+            margin-left: 100px; padding: 0;
+             position:relative;" >
+        <span
+                style="
+                 margin-left: 30px;
+                 margin-top:15px;
+                 padding-left: 100px;
+                 background-color: aquamarine;
+                 width: 100px;height: 100px; alignment: center;">
+
+            <i><h:outputText value="teste"/> </i></span>
+<!--        <rich:effect event="onmouseout" type="Opacity" params="duration:0.8,from:1.0,to:0.3" />-->
+    </div>
+
+    <h:form id="form">
+        <h:panelGrid columnClasses="acent">
+            <rich:dataScroller for="table" maxPages="5" fastStep="3"/>
+            <rich:dataTable value="#{carsBean.allInventoryItems}" var="car" id="table" rows="10">
+                <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Vendor " />
+                    </f:facet>
+                    <h:outputText value="#{car.vendor}" />
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Model" />
+                    </f:facet>
+                    <h:outputText value="#{car.model}" />
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Price" />
+                    </f:facet>
+                    <h:outputText value="#{car.price}" />
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Mileage" />
+                    </f:facet>
+                    <h:outputText value="#{car.mileage}" />
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="VIN " />
+                    </f:facet>
+                    <h:outputText value="#{car.vin}" />
+                </rich:column>
+            </rich:dataTable>
+            <rich:dataScroller for="table" maxPages="5" fastStep="3"/>
+        </h:panelGrid>
+        <a:commandButton value="Envira" actionListener="#{bean.my()}">
+
+        </a:commandButton>
+    </h:form>
+    <h:head>
+        <h:outputStylesheet library = "css" name = "index8.css" />
+
+    </h:head>
+<!--    <script src="resources/script/Jquery/JqueryLib.js" type="text/javascript"/>-->
+    <hr></hr>
+    <div id="pai">
+
+        <div  id="div1" class="myclass1">
+            <h:outputText value="DIV-1" styleClass="myclass"/>
+        </div>
+        <div  id="div2" class="myclass2">
+            <h:outputText value="DIV-2" styleClass="myclass"/>
+        </div>
+        <div  id="div3" class="myclass3">
+            <h:outputText value="DIV-3" styleClass="myclass"/>
+        </div>
+
+    </div>
+    <script src="resources/script/myscript.js" type="text/javascript"/>
+    <script type="text/javascript">
+        $(function () {
+            alert('incorporado');
+        });
+    </script>
+    <h:outputScript library="script" name="myscript.js"/>
+    <h:outputScript library="script" name="JqueryLib.js"/>
+
+ </ui:composition>
+
+
+<!--<a:jsFunction name="carregaValorSelectMenu"-->
+<!--              action="#{processoParteHome.carregaValorSelect()}"-->
+<!--              oncomplete="Richfaces.showModalPanel('modalMsg');"-->
+<!--/>-->
+
+<!--        #{processoParteHome.recuperaObj()}-->
+<!--        #{processoParteHome.recuperaTeste()}-->
+
+
+
+<!--<rich:panel style="color: #5e5e5e">-->
+<!--&lt;!&ndash;				<div>&ndash;&gt;-->
+<!--&lt;!&ndash;					<rich:modalPanel id="pnl">&ndash;&gt;-->
+<!--&lt;!&ndash;						<rich:panel>&ndash;&gt;-->
+<!--&lt;!&ndash;							<f:facet name="header">&ndash;&gt;-->
+<!--&lt;!&ndash;								<h:outputText value="Mensagem"/>&ndash;&gt;-->
+<!--&lt;!&ndash;								<h:messages></h:messages>&ndash;&gt;-->
+<!--&lt;!&ndash;								<rich:message></rich:message>&ndash;&gt;-->
+<!--&lt;!&ndash;								<rich:messages styleClass="alert alert-warning"/>&ndash;&gt;-->
+<!--&lt;!&ndash;							</f:facet>&ndash;&gt;-->
+<!--&lt;!&ndash;						</rich:panel>&ndash;&gt;-->
+
+<!--&lt;!&ndash;						<f:facet name="controls">&ndash;&gt;-->
+<!--&lt;!&ndash;							&lt;!&ndash;							<h:graphicImage value="/pages/close.png" style="cursor: pointer" onclick="Richfaces.hideModalPanel('pnl')"/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;							<h:panelGroup>&ndash;&gt;-->
+<!--&lt;!&ndash;								<s:span id="fecharModal2" title="Fechar" styleClass="hidelink btn-fechar"><i class="icon-fechar"></i></s:span>&ndash;&gt;-->
+<!--&lt;!&ndash;								<rich:componentControl for="pnl" attachTo="fecharModal" operation="hide" event="onclick"/>&ndash;&gt;-->
+<!--&lt;!&ndash;							</h:panelGroup>&ndash;&gt;-->
+<!--&lt;!&ndash;						</f:facet>&ndash;&gt;-->
+<!--&lt;!&ndash;						<a:form>&ndash;&gt;-->
+<!--&lt;!&ndash;							<a onclick="richfaces.hideModalPanel('pnl');" href="#">Hidden modal</a>&ndash;&gt;-->
+<!--&lt;!&ndash;							<rich:messages ajaxRendered="true" />&ndash;&gt;-->
+<!--&lt;!&ndash;							<h:messages id="msg" />&ndash;&gt;-->
+<!--&lt;!&ndash;						</a:form>&ndash;&gt;-->
+<!--&lt;!&ndash;					</rich:modalPanel>&ndash;&gt;-->
+<!--&lt;!&ndash;					<wi:messagesAux idMessage="abaAssuntoMsg" />&ndash;&gt;-->
+<!--&lt;!&ndash;					<a onclick="Richfaces.showModalPanel('pnl');" href="#">Show modal</a>&ndash;&gt;-->
+<!--&lt;!&ndash;				</div>&ndash;&gt;-->
+
+
+
+
+
+<!--<s:div>-->
+<!--    <rich:modalPanel id="modalMsg" domElementAttachment="parent">-->
+<!--        <f:facet name="header">-->
+<!--            <h:outputText value="Mensagem"/>-->
+<!--        </f:facet>-->
+<!--        <f:facet name="controls">-->
+<!--            &lt;!&ndash;							<h:graphicImage value="/pages/close.png" style="cursor: pointer" onclick="Richfaces.hideModalPanel('pnl')"/>&ndash;&gt;-->
+<!--            <h:panelGroup>-->
+<!--                <s:span id="fecharModal" title="Fechar" styleClass="hidelink btn-fechar"><i class="icon-fechar"></i></s:span>-->
+<!--                <rich:componentControl for="modalMsg" attachTo="fecharModal" operation="hide" event="onclick"/>-->
+<!--            </h:panelGroup>-->
+<!--        </f:facet>-->
+<!--        <h:form>-->
+<!--            <h:messages showSummary="true" showDetail="true" styleClass="alert alert-popup" />-->
+<!--            <a:outputPanel ajaxRendered="true">-->
+
+<!--                &lt;!&ndash;											<h:messages id="error"></h:messages>&ndash;&gt;-->
+
+<!--            </a:outputPanel>-->
+<!--        </h:form>-->
+<!--    </rich:modalPanel>-->
+<!--</s:div>-->

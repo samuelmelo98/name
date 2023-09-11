@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      >
+<h:head>
+    <ui:insert name="index3">
+        <ui:include src="index3.xhtml">
+            <ui:param name="pessoa" value="#{bean.pessoa}"></ui:param>
+        </ui:include>
+    </ui:insert>
+
+    <h:outputScript>
+        function verificaStatus(event) {
+            var status = document.getElementById("divStatus");
+            if (event.status == 'begin') {
+                divStatus.style.visibility = 'visible';
+            } else if (event.status == 'success') {
+                divStatus.style.visibility = 'hidden';
+            }
+
+        }
+    </h:outputScript>
+    <h:outputStylesheet>
+        #divMensagem {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 35%;
+            width: 300px;
+            height: 60px;
+            border: 1px solid #36C;
+            background-color: #FFFFFF;
+        }
+
+        #divStatus {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            overflow: hidden;
+            text-align: center;
+            z-index: 1000;
+            background-color: aqua;
+            visibility: hidden;
+        }
+    </h:outputStylesheet>
+</h:head>
+<f:view>
+    <h:outputLabel value="Ola, Mundoo"/>
+</f:view>
+<hr></hr>
+<h:form>
+    Texto:
+<!--    <h:inputText id="lista" value="#{bean.nu}"/>-->
+<!--    <h:outputText id="saida" value="#{bean.nome}"/>-->
+    <h:commandButton value="Submeter" action="#{bean.atualizaAlgo()}">
+        <f:ajax event="action"
+                execute="@form"
+                render=""
+                onevent="verificaStatus"
+        />
+    </h:commandButton>
+
+</h:form>
+<h:outputText id="texto"
+              value="#{bean.nome}"
+/>
+<div id="divMensagem">
+    <h:outputText id="texto2"
+                  value="#{bean.listaInteira}"
+
+
+    />
+</div>
+<div id="divStatus">
+
+</div>
+<h:form>
+    <h:commandButton type="submit" value="ir" action="index3">
+    </h:commandButton>
+</h:form>
+<h:outputText value="&nbsp;"/>
+<h:button value="index4" outcome="index3"/>
+
+<ui:include src="index4.xhtml">
+    <ui:param name="nomeUsuario" value="#{bean.pessoa}"></ui:param>
+</ui:include>
+
+
+<ui:include src="index6.xhtml">
+    <ui:param name="nomeUsuario" value="#{bean.pessoa}"></ui:param>
+</ui:include>
+
+
+<h:commandLink value="index6" action="index6"><h:button outcome="index6"></h:button></h:commandLink>
+
+</html>

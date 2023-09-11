@@ -1,0 +1,53 @@
+
+
+
+
+
+.myclass1{
+    background-color: aqua;
+    width: 200px;
+    height: 400px;
+    color: red;
+    z-index: 100;
+    padding-left: 0px;
+
+    position: inherit;
+    margin-right: 20px;
+}
+.myclass2{
+    background-color: red;
+    width: 1100px;
+    height: 200px;
+
+    /*margin-left: 100px;*/
+    /*position: inherit;*/
+    /*margin-left: 100px;*/
+    padding-left: 1000px;
+    /*border: blue;*/
+    /*border-width: medium;*/
+    clear: both;
+
+}
+.myclass3{
+    background-color: skyblue;
+    width: 200px;
+    height: 300px;
+    position: relative;
+
+    clear: left;
+}
+
+#mydiv{
+    width: 200px;
+    height: 200px;
+}
+
+#pai{
+    width: 800px;
+    height: 1000px;
+    background-color: cornsilk;
+    overflow: auto;
+    float: none;
+    margin: 0 auto;
+    box-shadow: 0 0 20px #333333 ;
+}

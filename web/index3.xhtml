@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich" xmlns:aj4="http://java.sun.com/jsf/html"
+      xmlns:a="http://java.sun.com/jsf/html"
+>
+
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+            <h:head>
+                <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+            </h:head>
+
+    <h:body>
+
+        <rich:panel>
+           <a:form>
+
+
+
+            <div style="width:950px;position: relative; overflow: inherit;">
+                <h:panelGrid columns="3">
+                    <h:panelGroup>
+                        <div style="width: 346px; height:600px;">
+                            <div style="width: 100px; height:70px;float: left;">
+                                <h:outputLabel value="Data Prisao" for="c"/>
+                                <h:selectOneRadio value="#{processoParteHome.processoParteTest.reuPreso}" layout="lineDirection" id="a">
+                                    <f:selectItem
+                                            itemValue="#{true}"
+                                            itemLabel="Sim"/>
+                                    <f:selectItem
+                                            itemValue="#{false}"
+                                            itemLabel="Não"/>
+
+                                </h:selectOneRadio>
+                            </div>
+
+                            <div style="width: 100px;height:70px; margin-left:45%;">
+                                <h:outputLabel value="data prisao" for="a"/>
+                                <rich:calendar
+                                        value="#{processoParteHome.processoParteTest.dataDaPrisao}"
+                                        datePattern="dd/MM/yyy" id="c" inputSize="10" showInput="true" >
+
+
+                                </rich:calendar>
+                            </div>
+
+                            <div style=" width: 346px; height: 50px; float: left; margin-top: 29%;">
+                                <h:outputLabel value="Registro Judiciario Individual- RJI" for="d"/><br/>
+                                <h:inputText value="" id="d" size="20"/>
+                            </div>
+                            <div style="float:left;  width: 300px; margin-top: 30%;">
+                                <h:outputLabel value="Demais Informacoes" for="e"></h:outputLabel>
+                                <h:inputTextarea id="e"
+                                                 value="#{processoParteHome.processoParteTest.demaisInfor}"
+                                                 rows="8"
+                                                 cols="50"
+
+                                 style="resize: none;">
+
+
+                                </h:inputTextarea>
+                            </div>
+                            <div style="width: 350px;  margin-top: 50%; position: absolute; margin-left: 4%;">
+                                <h:commandButton value="Salvar" style=" background-color: skyblue; color: white" >
+
+                                </h:commandButton>
+
+                                <a4j:commandButton
+                                        type="submit"
+                                        value="Salvar"
+                                        action="#{bean.my()}"
+                                        onclick=""
+                                        oncomplete="hideLoading();"
+
+                                >
+                                </a4j:commandButton>
+                            </div>
+                        </div>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <div style="width: 248px; height: 600px; float: left;">
+                            <div style="width: 240px; height: 70px; position: relative;">
+                                <h:outputLabel value="N do Processo" for="b"></h:outputLabel>
+                                <h:inputText id="b" size="30"
+                                             value="#{processoParteHome.processoParteTest.numeroProcesso}">
+
+                                </h:inputText>
+                            </div>
+                            <div style="width: 100%;height: 100%;  margin-top: 40%;position: relative;">
+                                <h:outputLabel value="Data da Ultima Revisao"/>
+                                <rich:calendar
+                                        value="#{processoParteHome.processoParteTest.dataUltimaRevisao}"
+                                        datePattern="dd/MM/yy">
+
+                                </rich:calendar>
+
+                            </div>
+                        </div>
+
+
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <div style="width: 348px;height: 600px; float: left;">
+                            <div style="width: 300px;height: 200px; float: left;">
+                                <h:outputLabel value="Tipo de Prisao" for="f"/><br></br>
+                                <h:selectOneMenu
+                                        value="#{processoParteHome.processoParteTest.tipoDePrisao}" id="f">
+                                    <f:selectItem
+                                            itemLabel="Selecione"
+                                            itemValue=""/>
+                                    <f:selectItem
+                                            itemLabel="PROVISÓRIA"
+                                            itemValue="provisória"/>
+                                    <f:selectItem
+                                            itemLabel="PREVENTIVA"
+                                            itemValue="preventiva"/>
+                                    <f:selectItem
+                                            itemLabel="DEFINITIVA"
+                                            itemValue="definitiva"/>
+                                    <f:selectItem
+                                            itemLabel="DOMICILIAR"
+                                            itemValue="domiciliar"/>
+
+                                </h:selectOneMenu>
+                            </div>
+
+                        </div>
+
+                    </h:panelGroup>
+                </h:panelGrid>
+            </div>
+           </a:form>
+        </rich:panel>
+    </h:body>
+            <h:outputScript>
+
+                alert();
+                jQuery(function (e) {
+                    $("#spann").attr("title","teste");
+                    $("#spann").attr("target","_blank");
+                })
+                alert($("a").length);
+                alert("teste");
+                $(function (e) {
+                    $("#spann")onkeypress
+
+                })
+
+            </h:outputScript>
+
+        <hr></hr><hr></hr>
+
+
+            <rich:panel>
+                <div style="width:950px;position: relative;" id="main">
+                    <h:panelGrid columns="3">
+                        <h:panelGroup>
+                            <div style="background-color: red;width:346px; height: 600px;float: left; z-index: 1;" id="one">
+                                <div>
+                                    <h:outputLabel value="Reu Preso" for="one-a"/>
+                                    <h:selectOneRadio value="#{processoParteHome.processoParteTest.reuPreso}" layout="lineDirection" id="one-a">
+                                        <f:selectItem
+                                                itemValue="#{true}"
+                                                itemLabel="Sim"/>
+                                        <f:selectItem
+                                                itemValue="#{false}"
+                                                itemLabel="Não"/>
+                                    </h:selectOneRadio>
+                                </div>
+
+                                <div>
+                                    <h:outputLabel value="data prisao" for="one-b"/>
+                                    <rich:calendar
+                                            value="#{processoParteHome.processoParteTest.dataDaPrisao}"
+                                            datePattern="dd/MM/yyy" id="one-b" inputSize="10">
+
+
+                                    </rich:calendar>
+                                </div>
+
+                                <div>
+                                    <h:outputLabel value="Registro Judiciario Individual- RJI" for="one-c"/><br/>
+                                    <h:inputText value="" id="one-c" size="44"/>
+                                </div>
+                                <div style="z-index: 3;">
+                                    <h:outputLabel value="Demais Informacoes" for="one-d"></h:outputLabel><br/>
+                                    <h:inputTextarea id="one-d"
+                                                     value="#{processoParteHome.processoParteTest.demaisInfor}"
+
+
+                                     style="resize: none;">
+
+
+                                    </h:inputTextarea>
+                                </div>
+                                <div>
+                                    <h:commandButton value="Salvar" style="margin-left:20%; background-color: blue; color: white" >
+
+                                    </h:commandButton>
+                                </div>
+                            </div>
+                        </h:panelGroup>
+
+                        <h:panelGroup>
+                            <div id="two" style="width: 250px;background-color: green; height: auto;height:600px;float: left">
+                                <div>
+                                    <h:outputLabel value="N do Processo" for="two-a"></h:outputLabel>
+                                    <h:inputText id="two-a" size="30"
+                                                 value="#{processoParteHome.processoParteTest.numeroProcesso}">
+
+                                    </h:inputText>
+                                </div>
+                                <div>
+                                    <h:outputLabel value="Data da Ultima Revisao" for="two-b"/>
+                                    <rich:calendar
+                                            value="#{processoParteHome.processoParteTest.dataUltimaRevisao}"
+                                            datePattern="dd/MM/yy" id="two-b">
+
+                                    </rich:calendar>
+                                </div>
+                            </div>
+
+
+                        </h:panelGroup>
+
+                        <h:panelGroup>
+                            <div id="tree" style="width: 346px;background-color: blue;height: 600px; float: left;">
+                                <div>
+                                    <h:outputLabel value="Tipo de Prisao" for="tree-a"/><br></br>
+                                    <h:selectOneMenu
+                                            value="#{processoParteHome.processoParteTest.tipoDePrisao}" id="tree-a">
+                                        <f:selectItem
+                                                itemLabel="Selecione"
+                                                itemValue=""/>
+                                        <f:selectItem
+                                                itemLabel="PROVISÓRIA"
+                                                itemValue="provisória"/>
+                                        <f:selectItem
+                                                itemLabel="PREVENTIVA"
+                                                itemValue="preventiva"/>
+                                        <f:selectItem
+                                                itemLabel="DEFINITIVA"
+                                                itemValue="definitiva"/>
+                                        <f:selectItem
+                                                itemLabel="DOMICILIAR"
+                                                itemValue="domiciliar"/>
+                                    </h:selectOneMenu>
+                                </div>
+
+                            </div>
+
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </div>
+            </rich:panel>
+
+
+            <rich:panel   style="background-color: beige; height: 200px" title="test" header="Historico">
+                <rich:dataTable width="100%" id="table" rows="2"
+                value="#{bean.nomes}"
+                var="row">
+                    <f:facet name="header">
+                        <rich:columnGroup>
+                            <rich:column style="width: 30%;">
+                                <h:outputText value="teste1"/>
+                            </rich:column>
+
+                            <rich:column style="width: 30%;">
+                                <h:outputText value="teste2"/>
+                            </rich:column>
+
+                            <rich:column style="width:30%;">
+                                <h:outputText value="teste3"/>
+                            </rich:column>
+
+                            <rich:column style="width:30%;">
+
+                                <h:outputText value="Nome"/>
+                            </rich:column>
+                        </rich:columnGroup>
+                    </f:facet>
+                    <rich:column>
+                        <h:outputText value="#{row}"/>
+                    </rich:column>
+                </rich:dataTable>
+                <rich:dataScroller for="table" maxPages="5" fastStep="3"/>
+            </rich:panel>
+            <div>
+                <h:outputText value=" test"/>
+                <h:outputText value=" test"/>
+                <h:outputText value=" test"/>
+                <h:outputText value=" test"/>
+                <h:outputText value=" test"/>
+                <h:outputText value=" test"/>
+                <h:outputText value=" test"/>
+                <h:outputText value=" test"/>
+            </div>
+<!--     /**-->
+<!--    */-->
+<!--    (expressao) ? x1:x2-->
+    <a4j:status id="statusAguarde" onstart="Richfaces.showModalPanel('ajaxLoadingModalBox',{top:200})"
+                 onstop="Richfaces.hideModalPanel('ajaxLoadingModalBox')"/>
+
+    <rich:popupPanel id="ajaxLoadingModalBox" autosized="true" >
+        <div class="loader">
+            CARREGANDO
+            <h:graphicImage id="imgLoader" value="/images/loader.gif"/>
+        </div>
+    </rich:popupPanel>
+
+    <rich:popupPanel id="mensagem">
+        <h:messages/>
+        <h:commandButton value="Fechar" onclick="javascript:Richfaces.hideModalPanel('mensagem')" />
+    </rich:popupPanel>
+
+
+<!--    <div>-->
+<!--        <rich:modalPanel id="pnl">-->
+<!--            <f:facet name="header">-->
+<!--                <h:outputText value="Mensagem"/>-->
+<!--                <h:messages/>-->
+<!--            </f:facet>-->
+<!--            <f:facet name="controls">-->
+<!--                &lt;!&ndash;							<h:graphicImage value="/pages/close.png" style="cursor: pointer" onclick="Richfaces.hideModalPanel('pnl')"/>&ndash;&gt;-->
+<!--                <h:panelGroup>-->
+<!--                    <s:span id="fecharModal" title="Fechar" styleClass="hidelink btn-fechar"><i class="icon-fechar"></i></s:span>-->
+<!--                    <rich:componentControl for="pnl" attachTo="fecharModal" operation="hide" event="onclick"/>-->
+<!--                </h:panelGroup>-->
+<!--            </f:facet>-->
+<!--            <a:form>-->
+<!--                <a onclick="richfaces.hideModalPanel('pnl');" href="#">Hidden modal</a>-->
+<!--                <rich:messages ajaxRendered="true" />-->
+<!--                <h:messages id="msg" />-->
+<!--            </a:form>-->
+<!--        </rich:modalPanel>-->
+<!--        <a onclick="Richfaces.showModalPanel('pnl');" href="#">Show modal</a>-->
+<!--    </div>-->
+
+
+</ui:composition>
+
+</html>

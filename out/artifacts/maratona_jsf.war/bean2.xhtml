@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:dc="http://devdojo.com.br/componets"
+      xmlns:a="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Bean-2</title>
+    <style type="text/css">
+        svg{
+            background-color: green;
+            padding: 0px;
+            margin-left: 0px;
+        }
+        rect{
+            background-color: bisque;
+        }
+        body{
+            margin: 0;
+        }
+        .myclass{
+            visibility: hidden;
+            text-decoration-color: green;
+        }
+
+        .tooltip {
+            /*background-color: #{ a4jSkin.generalBackgroundColor};*/
+            background-color: aquamarine;
+            border-width:3px;
+        }
+
+        .tooltip-custom-body {
+            background-color: orange;
+        }
+
+        .tooltip-text {
+            width: 350px;
+            height: 80px;
+            cursor: arrow;
+            border-width: 2px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .tooltipData {
+            font-weight: bold;
+        }
+    </style>
+    <h:outputStylesheet library=""  name="meucss.css"/>
+   <h:outputScript>
+       window.addEventListener("load",function (event) {
+           // myMouseOut();
+       });
+
+
+   function  myMouseOut(){
+       /**
+        * querySelector(.# nametag);
+        * # seleciona o id
+        * . seleciona uma classe
+        * */
+
+
+           var x = document.querySelector(".myclass");
+           x.style.visibility ="hidden";
+
+       }
+
+       function myMouseOver(){
+
+           var x = document.querySelector(".myclass");
+           x.style.visibility ="visible";
+
+       }
+
+   </h:outputScript>
+</head>
+<body>
+<h:outputText value="test" styleClass="myclass"/><br/>
+
+
+<ui:repeat value="#{bean2.nomes}" var="item">
+    <h:outputLabel value="#{item}"/><br/>
+    <h:commandButton value="btn" onmouseover="myMouseOver()" onmouseout="myMouseOut()" >
+        <dc:confirmDelete/>
+    </h:commandButton>
+    <h:outputLabel value="type oculto"/>
+    <input type="hidden" onmouseover="myMouseOver()" onmouseout="myMouseOut()"/>
+
+</ui:repeat>
+<!--#{bean2.nomes}-->
+<h:outputText  value="#{bean2.pessoa.nome}"/>
+<h:outputText value="Array"/>
+<ui:repeat value="#{bean2.array}" var="variavel"><br/>
+    <h:outputLabel value="#{variavel}"/><br></br>
+</ui:repeat>
+#{bean2.init()}
+<h:outputLabel value="SVG "></h:outputLabel>
+<h:outputText value="testeOutputText"></h:outputText>
+<h:outputLabel value="teste"></h:outputLabel>
+
+<div>
+    <svg height="50" width="100" >
+        <g>
+            <rect
+                    x="0"
+                    y="5"
+                    width="100"
+                    height="40"
+                    fill="red"
+                    rx="18"
+                    >
+
+
+
+
+
+            </rect>
+            <text x="14" y="30" font-family="Verdana" font-size="12" fill="white">REU PRESO</text>
+            <input type="hidden" onmouseover="myMouseOver()" onmouseout="myMouseOut()"/>
+        </g>
+        <input type="hidden" onmouseover="myMouseOver()" onmouseout="myMouseOut()"/>
+        <h:inputHidden value = "Hello World" id = "hiddenField" />
+    </svg>
+    <input type="hidden" onmouseover="myMouseOver()" onmouseout="myMouseOut()"/>
+
+  <div style="background-color: aqua" onmouseout="myMouseOut()" onmouseover="myMouseOver()">
+      <h:outputLabel value="#{bean2.string}" onmouseover="">
+
+      </h:outputLabel>
+
+  </div>
+
+
+
+</div>
+<h:inputHidden value="inputHidden"/>
+</body>
+
+
+<!--<h:panelGrid columns="2">-->
+<!--    <rich:panel id="sample1" styleClass="tooltip-text" bodyClass="rich-laguna-panel-no-header">-->
+<!--        <p>-->
+<!--            Here you can see a <b>default client-side</b> tool-tip-->
+<!--        </p>-->
+<!--        <rich:tooltip id="tt1" styleClass="tooltip" layout="block">-->
+<!--                <span style="white-space: nowrap"> This tool-tip content was <strong>pre-rendered</strong> to the page.<br />-->
+<!--                    The tool-tip is also following mouse around.</span>-->
+<!--        </rich:tooltip>-->
+<!--    </rich:panel>-->
+<!--    <rich:panel id="sample2" styleClass="tooltip-text" bodyClass="rich-laguna-panel-no-header">-->
+<!--        <p>-->
+<!--            This tool-tip will not <b>follow the mouse</b>, and has a <b>delay of 1.5 seconds</b>, so be patient!-->
+<!--        </p>-->
+<!--        <rich:tooltip followMouse="false" showDelay="1500" styleClass="tooltip-custom-body" layout="block">-->
+<!--                <span style="white-space: nowrap"> This tool-tip content is also <strong>pre-rendered</strong> to the-->
+<!--                    page.<br /> </span>-->
+<!--        </rich:tooltip>-->
+<!--    </rich:panel>-->
+<!--    <h:form id="form">-->
+<!--        <rich:panel id="sample3" styleClass="tooltip-text" bodyClass="rich-laguna-panel-no-header">-->
+<!--            <p>This tool-tip was rendered on the server using an Ajax request.</p>-->
+<!--            <rich:tooltip mode="ajax" styleClass="tooltip" layout="block">-->
+<!--                <span style="white-space: nowrap">This tool-tip content was <strong>rendered on the server</strong> </span>-->
+<!--                <h:panelGrid columns="2">-->
+<!--                    <h:outputText style="white-space:nowrap" value="tooltips requested:" />-->
+<!--                    <h:outputText value="#{tooltipData.tooltipCounter}" styleClass="tooltipData" />-->
+<!--                </h:panelGrid>-->
+<!--            </rich:tooltip>-->
+<!--        </rich:panel>-->
+<!--        <rich:panel id="sample4" styleClass="tooltip-text" bodyClass="rich-laguna-panel-no-header">-->
+<!--            <p>-->
+<!--                This tool-tip will be <b>activated on a mouse click</b>, and has default content defined.-->
+<!--            </p>-->
+<!--            <rich:tooltip showEvent="click" mode="ajax" styleClass="tooltip" layout="block">-->
+<!--                <f:facet name="loading">-->
+<!--                    <strong>Wait...</strong>-->
+<!--                </f:facet>-->
+<!--                <span style="white-space: nowrap">This tool-tip content was <strong>rendered on server</strong><br />-->
+<!--                    </span>-->
+<!--                <h:panelGrid columns="2">-->
+<!--                    <h:outputText style="white-space:nowrap" value="tooltips requested:" />-->
+<!--                    <h:outputText value="#{tooltipData.tooltipCounter}" styleClass="tooltipData" />-->
+<!--                </h:panelGrid>-->
+<!--            </rich:tooltip>-->
+<!--        </rich:panel>-->
+<!--    </h:form>-->
+<!--</h:panelGrid>-->
+
+</html>
